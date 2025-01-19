@@ -3,13 +3,13 @@
 </script>
 
 <template>
-  <div class="board">
+  <div class="board-container">
 
   </div>
 </template>
 
 <style scoped>
-.board {
+.board-container {
   width: 100%;
   height: 100%;
   overflow-x: scroll;
