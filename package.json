@@ -1,0 +1,12 @@
+{
+  "name": "sinpex-assessment",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "concurrently \"yarn run frontend\" \"yarn run api\"",
+    "frontend": "",
+    "api": ""
+  },
+  "dependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
