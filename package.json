@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "concurrently \"yarn run frontend\" \"yarn run api\"",
-    "frontend": "",
-    "api": ""
+    "frontend": "cd frontend && yarn dev",
+    "api": "cd api && yarn start:dev"
   },
   "dependencies": {
     "concurrently": "^9.1.2"
