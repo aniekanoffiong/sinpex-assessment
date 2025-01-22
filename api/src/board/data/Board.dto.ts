@@ -11,7 +11,7 @@ export class BoardDto implements BoardInterface {
     public updated: Date
   ) {}
 
-  toBoardDto(boardDomain: BoardDomain) {
+  static toBoardDto(boardDomain: BoardDomain) {
     return new BoardDto(
       boardDomain.id,
       boardDomain.title,

@@ -3,32 +3,31 @@ import { defineStore } from 'pinia'
 import type { BoardInterface } from '../../../interfaces/BoardInterface'
 
 export const useBoardStore = defineStore('board', () => {
-  const boardItems = ref([] as BoardInterface[])
-  const hoverBoard = ref()
-  const hoverCard = ref()
-  const currentCard = ref()
+  const boardItems = ref([] as BoardInterface[]);
+  const hoverBoard = ref();
+  const hoverCase = ref();
+  const currentCase = ref();
   // const doubleCount = computed(() => count.value * 2)
 
-  function handleDragStart(e: DragEvent, cardId: number) {
+  function handleDragStart(e: DragEvent, caseId: number) {
     e.stopPropagation();
-    currentCard.value = cardId;
+    currentCase.value = caseId;
     e.dataTransfer!.effectAllowed = "move";
-    e.dataTransfer!.setData("cardId", cardId.toString());
+    e.dataTransfer!.setData("caseId", caseId.toString());
   }
 
-  function handleDragOver(e: DragEvent, [boardId, cardId]: [boardId: number, cardId: number | null]) {
+  function handleDragOver(e: DragEvent, [boardId, caseId]: [boardId: number, caseId: number | null]) {
     e.preventDefault()
-    // console.log(boardId, cardId)
+    // console.log(boardId, caseId)
     hoverBoard.value = boardId
-    hoverCard.value = cardId
+    hoverCase.value = caseId
   }
 
-  function handleDrop(e: DragEvent, [boardId, cardId]: [boardId: number, cardId: number | null]) {
-    hoverBoard.value = null
-    hoverCard.value = null
+  function handleDrop(e: DragEvent, [boardId, caseId]: [boardId: number, caseId: number | null]) {
+    hoverBoard.value = null;
+    hoverCase.value = null;
     e.stopPropagation();
-    const dragCardId = e.dataTransfer!.getData("cardId");
-    // console.log(dragCardId, boardId, cardId)
+    const dragCaseId = e.dataTransfer!.getData("caseId");
     e.dataTransfer!.dropEffect = "move";
   }
 
@@ -36,17 +35,17 @@ export const useBoardStore = defineStore('board', () => {
     boardItems.value = boardList
   }
 
-  function moveCardToBoard() {
+  function moveCaseToBoard() {
 
   }
 
   return {
     hoverBoard,
-    hoverCard,
-    currentCard,
+    hoverCase,
+    currentCase,
     boardItems,
     setBoards,
-    moveCardToBoard,
+    moveCaseToBoard,
     handleDragStart,
     handleDragOver,
     handleDrop

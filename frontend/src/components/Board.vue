@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { onMounted } from 'vue';
-  import Card from './Card.vue'
+  import Case from './Case.vue'
   import { type BoardInterface } from '../../../interfaces/BoardInterface'
   import Pencil from './icons/Pencil.vue';
   import { useBoardStore } from '../stores/board'
@@ -30,8 +30,8 @@
         <span>{{ boardItem.title }}</span>
         <Pencil class="pencil-icon" />
       </header>
-      <div class="card-container">
-        <Card :card="cardItem" v-for="cardItem in boardItem.items" :key="cardItem.id" />
+      <div class="case-container">
+        <Case :case="caseItem" v-for="caseItem in boardItem.items" :key="caseItem.id" />
       </div>
       <button class="add-case-btn" v-if="index === 0">
         + Create Case
@@ -75,14 +75,14 @@ header span {
 .pencil-icon {
   font-size: 1rem;
 }
-.card-container {
+.case-container {
   display: flex;
   flex-direction: column;
   row-gap: 0.6rem;
   overflow-y: scroll;
   max-height: 89%;
 }
-.board:not(:first-child) > .card-container {
+.board:not(:first-child) > .case-container {
   max-height: 91%;
 }
 .add-case-btn {

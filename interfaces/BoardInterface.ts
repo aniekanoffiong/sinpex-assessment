@@ -1,7 +1,16 @@
-import { type CardInterface } from './CardInterface';
+import { type CaseInterface } from './CaseInterface';
 
-export interface BoardInterface {
+export interface BoardDataInterface {
   id: number;
   title: string;
-  items: CardInterface[]
+  items: CaseInterface[]
+}
+
+export interface BoardInterface extends BoardDataInterface {
+  created: Date;
+  updated: Date;
+}
+
+export interface BoardDtoInterface {
+  title: string
 }

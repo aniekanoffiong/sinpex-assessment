@@ -1,4 +1,4 @@
-export enum CardStatus {
+export enum CaseStatus {
   ACTIVE = "ACTIVE",
   COMPLETED = "COMPLETED"
 }

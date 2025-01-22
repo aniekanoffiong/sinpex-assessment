@@ -1,35 +1,35 @@
 <script setup lang="ts">
   import { daysBetween } from '@/utils';
-  import { type CardInterface } from '../../../interfaces/CardInterface'
+  import { type CaseInterface } from '../../../interfaces/CaseInterface'
   import { useBoardStore } from '../stores/board'
   import { storeToRefs } from 'pinia';
   
   const store = useBoardStore()
   const { handleDragStart, handleDragOver, handleDrop } = store
-  const { hoverBoard, hoverCard, currentCard } = storeToRefs(store);
-  const { card } = defineProps<{ card: CardInterface }>();
-  console.log(hoverBoard, card.boardId)
-  console.log(card.id, currentCard, hoverCard)
+  const { hoverBoard, hoverCase, currentCase } = storeToRefs(store);
+  const { case } = defineProps<{ case: CaseInterface }>();
+  console.log(hoverBoard, case.boardId)
+  console.log(case.id, currentCase, hoverCase)
 </script>
 
 <template>
-  <div class="card"
-    :class="{'hovered': hoverCard === card.id && currentCard !== card.id }"
+  <div class="case"
+    :class="{'hovered': hoverCase === case.id && currentCase !== case.id }"
     draggable="true"
-    @dragstart="(e: DragEvent) => handleDragStart(e, card.id)"
-    @dragover.prevent="(e: DragEvent) => handleDragOver(e, [card.boardId, card.id])"
-    @drop="(e: DragEvent) => handleDrop(e, [card.boardId, card.id])"
+    @dragstart="(e: DragEvent) => handleDragStart(e, case.id)"
+    @dragover.prevent="(e: DragEvent) => handleDragOver(e, [case.boardId, case.id])"
+    @drop="(e: DragEvent) => handleDrop(e, [case.boardId, case.id])"
   >
-    <div class="title">{{ card.title }}</div>
+    <div class="title">{{ case.title }}</div>
     <progress id="progress" :value="38" :max="100">40%</progress>
     <div class="date-info">
-      Updated {{ daysBetween(card.updated, new Date()) }} days ago
+      Updated {{ daysBetween(case.updated, new Date()) }} days ago
     </div>
   </div>
 </template>
 
 <style scoped>
-.card {
+.case {
   padding: 0.7rem;
   background-color: #fff;
   width: 100%;

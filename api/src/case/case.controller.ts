@@ -22,7 +22,6 @@ export class CaseController {
     return this.caseService.createCase(data);
   }
 
-
   @Patch("/api/cases/:id")
   update(
     @Param("id", ParseIntPipe) id: number,
