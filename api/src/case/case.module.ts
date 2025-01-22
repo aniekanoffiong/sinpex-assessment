@@ -2,9 +2,10 @@ import { Module } from '@nestjs/common';
 import { CaseController } from './case.controller';
 import { CaseService } from './service/case.service';
 import { CaseRepository } from './model/case.repository';
+import { PrismaModule } from '../prisma/prisma.module';
 
 @Module({
-  imports: [],
+  imports: [PrismaModule],
   controllers: [CaseController],
   providers: [
     CaseService,
