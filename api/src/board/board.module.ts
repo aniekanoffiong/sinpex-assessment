@@ -10,7 +10,7 @@ import { BoardRepository } from './model/board.repository';
     BoardService,
     {
       provide: "IBoardRepository",
-      useValue: BoardRepository,
+      useClass: BoardRepository,
     },
   ],
 })

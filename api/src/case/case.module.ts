@@ -10,7 +10,7 @@ import { CaseRepository } from './model/case.repository';
     CaseService,
     {
       provide: "ICaseRepository",
-      useValue: CaseRepository,
+      useClass: CaseRepository,
     },
   ],
 })
